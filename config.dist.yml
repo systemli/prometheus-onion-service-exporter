@@ -1,0 +1,8 @@
+---
+listen_addr: ":9999"
+tor_addr: "localhost:9050"
+timeout: "10s"
+check_interval: "30s"
+targets: []
+#  - name: "website"
+#    url: "http://7sk2kov2xwx6cbc32phynrifegg6pklmzs7luwcggtzrnlsolxxuyfyd.onion"
