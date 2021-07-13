@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"net/http"
 	"net/url"
@@ -14,14 +15,21 @@ import (
 
 var (
 	client *http.Client
+	cfg    *Config
 )
 
-func main() {
-	err, cfg := LoadConfig("config.yml")
+func init() {
+	configFile := flag.String("c", "config.yml", "Path to your config file")
+	flag.Parse()
+
+	var err error
+	err, cfg = LoadConfig(configFile)
 	if err != nil {
 		log.Fatal(err)
 	}
+}
 
+func main() {
 	dialer, err := proxy.SOCKS5("tcp", cfg.TorAddr, nil, proxy.Direct)
 	if err != nil {
 		log.Fatal(err)
