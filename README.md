@@ -1,4 +1,4 @@
-# prometheus-onion-exporter
+# prometheus-onion-service-exporter
 
 [![Integration](https://github.com/systemli/prometheus-onion-service-exporter/actions/workflows/integration.yaml/badge.svg)](https://github.com/systemli/prometheus-onion-service-exporter/actions/workflows/integration.yaml)
 [![Quality](https://github.com/systemli/prometheus-onion-service-exporter/actions/workflows/quality.yaml/badge.svg)](https://github.com/systemli/prometheus-onion-service-exporter/actions/workflows/quality.yaml)
