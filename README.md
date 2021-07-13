@@ -18,7 +18,7 @@ $GOPATH/bin/prometheus-onion-service-exporter
 ### Commandline options
 
 ```
--c config.yml  # path of config file, see [config.dist.yml](config.dist.yml) for an example
+-c config.yml  # path of config file, see config.dist.yml for an example
 ```
 
 ## Metrics
