@@ -40,12 +40,14 @@ func (oc *OnionCollector) Collect(ch chan<- prometheus.Metric) {
 			name,
 			status.Host,
 		)
-		ch <- prometheus.MustNewConstMetric(
-			oc.Latency,
-			prometheus.GaugeValue,
-			status.Latency,
-			name,
-			status.Host,
-		)
+		if status.Up != 0 {
+			ch <- prometheus.MustNewConstMetric(
+				oc.Latency,
+				prometheus.GaugeValue,
+				status.Latency,
+				name,
+				status.Host,
+			)
+		}
 	}
 }
