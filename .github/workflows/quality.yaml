@@ -1,0 +1,16 @@
+name: Quality
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  golangci:
+    name: GolangCI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - name: GolangCI
+        uses: golangci/golangci-lint-action@v2.5.2
+        with:
+          version: v1.31
