@@ -3,6 +3,8 @@ listen_addr: ":9999"
 tor_addr: "localhost:9050"
 timeout: "10s"
 check_interval: "30s"
+log_level: "error"
+log_format: "fmt"
 targets: []
 #  - name: "website"
 #    type: "http"
