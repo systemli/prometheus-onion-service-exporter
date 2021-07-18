@@ -7,6 +7,7 @@ import (
 type OnionStatus struct {
 	Up      float64
 	Host    string
+	Type    string
 	Latency float64
 }
 
@@ -21,8 +22,8 @@ func NewOnionCollector() *OnionCollector {
 	statuses = make(map[string]OnionStatus)
 
 	return &OnionCollector{
-		Up:      prometheus.NewDesc("onion_service_up", "", []string{"name", "address"}, nil),
-		Latency: prometheus.NewDesc("onion_service_latency", "", []string{"name", "address"}, nil),
+		Up:      prometheus.NewDesc("onion_service_up", "", []string{"name", "address", "type"}, nil),
+		Latency: prometheus.NewDesc("onion_service_latency", "", []string{"name", "address", "type"}, nil),
 	}
 }
 
@@ -39,6 +40,7 @@ func (oc *OnionCollector) Collect(ch chan<- prometheus.Metric) {
 			status.Up,
 			name,
 			status.Host,
+			status.Type,
 		)
 		if status.Up != 0 {
 			ch <- prometheus.MustNewConstMetric(
@@ -47,6 +49,7 @@ func (oc *OnionCollector) Collect(ch chan<- prometheus.Metric) {
 				status.Latency,
 				name,
 				status.Host,
+				status.Type,
 			)
 		}
 	}
