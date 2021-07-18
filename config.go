@@ -11,6 +11,8 @@ const defaultListenAddr = ":9999"
 const defaultTorAddr = "localhost:9050"
 const defaultTimeout = time.Second * 10
 const defaultCheckInterval = time.Second * 30
+const targetTypeHTTP = "http"
+const targetTypeTCP = "tcp"
 
 type Config struct {
 	ListenAddr    string        `yaml:"listen_addr,omitempty"`
@@ -22,6 +24,7 @@ type Config struct {
 
 type Target struct {
 	Name string `yaml:"name"`
+	Type string `yaml:"type"`
 	URL  string `yaml:"url"`
 }
 

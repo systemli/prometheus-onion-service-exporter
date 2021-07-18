@@ -24,10 +24,14 @@ $GOPATH/bin/prometheus-onion-service-exporter
 ## Metrics
 
 ```
+# HELP onion_service_latency 
 # TYPE onion_service_latency gauge
-onion_service_latency{address="7sk2kov2xwx6cbc32phynrifegg6pklmzs7luwcggtzrnlsolxxuyfyd.onion",name="website"} 2
+onion_service_latency{address="7sk2kov2xwx6cbc32phynrifegg6pklmzs7luwcggtzrnlsolxxuyfyd.onion",name="website",type="http"} 1.167850077
+onion_service_latency{address="jntdndrgmfzgrnupgpm52xv2kwecq6mt4njyu2pzoenifsmiknxaasqd.onion:64738",name="mumble",type="tcp"} 0.331070165
+# HELP onion_service_up 
 # TYPE onion_service_up gauge
-onion_service_up{address="7sk2kov2xwx6cbc32phynrifegg6pklmzs7luwcggtzrnlsolxxuyfyd.onion",name="website"} 1
+onion_service_up{address="7sk2kov2xwx6cbc32phynrifegg6pklmzs7luwcggtzrnlsolxxuyfyd.onion",name="website",type="http"} 1
+onion_service_up{address="jntdndrgmfzgrnupgpm52xv2kwecq6mt4njyu2pzoenifsmiknxaasqd.onion:64738",name="mumble",type="tcp"} 1
 ```
 
 ### Docker

@@ -5,4 +5,8 @@ timeout: "10s"
 check_interval: "30s"
 targets: []
 #  - name: "website"
+#    type: "http"
 #    url: "http://7sk2kov2xwx6cbc32phynrifegg6pklmzs7luwcggtzrnlsolxxuyfyd.onion"
+#  - name: "mumble"
+#    type: "tcp"
+#    url: "tcp://jntdndrgmfzgrnupgpm52xv2kwecq6mt4njyu2pzoenifsmiknxaasqd.onion:64738"
