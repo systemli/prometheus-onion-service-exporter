@@ -1,4 +1,4 @@
-FROM alpine:3.14.0 as builder
+FROM alpine:3.14.1 as builder
 
 WORKDIR /go/src/github.com/systemli/prometheus-onion-service-exporter
 
