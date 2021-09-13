@@ -100,6 +100,7 @@ func checkHTTP(target Target, wg *sync.WaitGroup) {
 		if res.StatusCode == http.StatusOK {
 			up = 1.0
 		}
+		defer res.Body.Close()
 	}
 
 	statuses[target.Name] = OnionStatus{
@@ -127,12 +128,13 @@ func checkTCP(target Target, wg *sync.WaitGroup) {
 
 	up := 0.0
 	start := time.Now()
-	_, err = dialer.Dial("tcp", uri.Host)
+	conn, err := dialer.Dial("tcp", uri.Host)
 	if err != nil {
 		log.WithError(err).WithField("url", uri.String()).Warn("unable to get the url")
 	} else {
 		up = 1.0
 	}
+	defer conn.Close()
 
 	statuses[target.Name] = OnionStatus{
 		Up:      up,
