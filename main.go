@@ -133,8 +133,8 @@ func checkTCP(target Target, wg *sync.WaitGroup) {
 		log.WithError(err).WithField("url", uri.String()).Warn("unable to get the url")
 	} else {
 		up = 1.0
+		defer conn.Close()
 	}
-	defer conn.Close()
 
 	statuses[target.Name] = OnionStatus{
 		Up:      up,
