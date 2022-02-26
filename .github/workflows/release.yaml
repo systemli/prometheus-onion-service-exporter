@@ -8,17 +8,25 @@ on:
 jobs:
   release:
     name: Release
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2.4.0
-        with:
-          fetch-depth: 0
 
       - name: Setup go
         uses: actions/setup-go@v2.2.0
         with:
-          go-version: 1.17.x
+          go-version: '1.17.x'
+
+      - name: Cache Go Dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
 
       - name: Login to Docker Hub
         uses: docker/login-action@v1.13.0
@@ -26,7 +34,16 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Release
+      - name: Publish Changelog
+        uses: release-drafter/release-drafter@v5.18.1
+        with:
+          publish: true
+          name: ${{ github.ref_name }}
+          tag: ${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Releases
         uses: goreleaser/goreleaser-action@v2.8.1
         with:
           version: latest
