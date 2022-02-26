@@ -10,8 +10,7 @@ Export the status and latency of an onion service to prometheus.
 ## Usage
 
 ```
-go get github.com/systemli/prometheus-onion-service-exporter
-go install github.com/systemli/prometheus-onion-service-exporter
+go install github.com/systemli/prometheus-onion-service-exporter@latest
 $GOPATH/bin/prometheus-onion-service-exporter
 ```
 
