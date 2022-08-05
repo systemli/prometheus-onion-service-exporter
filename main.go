@@ -90,7 +90,7 @@ func checkHTTP(target Target, wg *sync.WaitGroup) {
 	}
 
 	transport := &http.Transport{Dial: dialer.Dial}
-	if cfg.IgnoreSSL {
+	if cfg.InsecureSkipVerify {
 		transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	}
 	client := &http.Client{Transport: transport, Timeout: cfg.Timeout}
