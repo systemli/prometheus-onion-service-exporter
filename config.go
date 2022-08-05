@@ -15,6 +15,7 @@ const defaultLogLevel = "error"
 const defaultLogFormat = "fmt"
 const targetTypeHTTP = "http"
 const targetTypeTCP = "tcp"
+const defaultIgnoreSSL = false
 
 type Config struct {
 	ListenAddr    string        `yaml:"listen_addr,omitempty"`
@@ -24,6 +25,7 @@ type Config struct {
 	LogLevel      string        `yaml:"log_level"`
 	LogFormat     string        `yaml:"log_format"`
 	Targets       []Target      `yaml:"targets,omitempty"`
+	IgnoreSSL     bool          `yaml:"ignore_ssl_verify"`
 }
 
 type Target struct {
@@ -40,6 +42,7 @@ func NewConfig() *Config {
 		CheckInterval: defaultCheckInterval,
 		LogLevel:      defaultLogLevel,
 		LogFormat:     defaultLogFormat,
+		IgnoreSSL:     defaultIgnoreSSL,
 	}
 }
 

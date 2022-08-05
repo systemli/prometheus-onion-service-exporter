@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/tls"
 	"flag"
 	"net/http"
 	"net/url"
@@ -89,6 +90,9 @@ func checkHTTP(target Target, wg *sync.WaitGroup) {
 	}
 
 	transport := &http.Transport{Dial: dialer.Dial}
+	if cfg.IgnoreSSL {
+		transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+	}
 	client := &http.Client{Transport: transport, Timeout: cfg.Timeout}
 	up := 0.0
 	start := time.Now()

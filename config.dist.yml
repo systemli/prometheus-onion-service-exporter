@@ -5,6 +5,7 @@ timeout: "10s"
 check_interval: "30s"
 log_level: "error"
 log_format: "fmt"
+ignore_ssl_verify: "false"
 targets: []
 #  - name: "website"
 #    type: "http"
