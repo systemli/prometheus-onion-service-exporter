@@ -72,7 +72,7 @@ func main() {
 
 	prometheus.MustRegister(NewOnionCollector())
 	http.Handle("/metrics", promhttp.Handler())
-	log.Fatal(http.ListenAndServe(":9999", nil))
+	log.Fatal(http.ListenAndServe(cfg.ListenAddr, nil))
 }
 
 func checkHTTP(target Target, wg *sync.WaitGroup) {
