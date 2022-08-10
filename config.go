@@ -17,13 +17,14 @@ const targetTypeHTTP = "http"
 const targetTypeTCP = "tcp"
 
 type Config struct {
-	ListenAddr    string        `yaml:"listen_addr,omitempty"`
-	TorAddr       string        `yaml:"tor_addr,omitempty"`
-	Timeout       time.Duration `yaml:"timeout,omitempty"`
-	CheckInterval time.Duration `yaml:"check_interval,omitempty"`
-	LogLevel      string        `yaml:"log_level"`
-	LogFormat     string        `yaml:"log_format"`
-	Targets       []Target      `yaml:"targets,omitempty"`
+	ListenAddr         string        `yaml:"listen_addr,omitempty"`
+	TorAddr            string        `yaml:"tor_addr,omitempty"`
+	Timeout            time.Duration `yaml:"timeout,omitempty"`
+	CheckInterval      time.Duration `yaml:"check_interval,omitempty"`
+	LogLevel           string        `yaml:"log_level"`
+	LogFormat          string        `yaml:"log_format"`
+	Targets            []Target      `yaml:"targets,omitempty"`
+	InsecureSkipVerify bool          `yaml:"insecure_skip_ssl_verify"`
 }
 
 type Target struct {
@@ -34,12 +35,13 @@ type Target struct {
 
 func NewConfig() *Config {
 	return &Config{
-		ListenAddr:    defaultListenAddr,
-		TorAddr:       defaultTorAddr,
-		Timeout:       defaultTimeout,
-		CheckInterval: defaultCheckInterval,
-		LogLevel:      defaultLogLevel,
-		LogFormat:     defaultLogFormat,
+		ListenAddr:         defaultListenAddr,
+		TorAddr:            defaultTorAddr,
+		Timeout:            defaultTimeout,
+		CheckInterval:      defaultCheckInterval,
+		LogLevel:           defaultLogLevel,
+		LogFormat:          defaultLogFormat,
+		InsecureSkipVerify: false,
 	}
 }
 
