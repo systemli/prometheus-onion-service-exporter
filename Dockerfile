@@ -14,13 +14,13 @@ RUN adduser \
     --uid "${UID}" \
     "${USER}"
 
-RUN apk add --no-cache ca-certificates
+RUN apk add --no-cache --update ca-certificates
 
 FROM scratch
 
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group
-COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY prometheus-onion-service-exporter /prometheus-onion-service-exporter
 
 USER appuser:appuser
