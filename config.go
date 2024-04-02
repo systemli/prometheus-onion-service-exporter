@@ -1,7 +1,7 @@
 package main
 
 import (
-	"io/ioutil"
+	"os"
 	"time"
 
 	"gopkg.in/yaml.v2"
@@ -48,7 +48,7 @@ func NewConfig() *Config {
 func LoadConfig(path *string) (error, *Config) {
 	cfg := NewConfig()
 
-	bytes, err := ioutil.ReadFile(*path)
+	bytes, err := os.ReadFile(*path)
 	if err != nil {
 		return err, cfg
 	}
