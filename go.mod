@@ -3,7 +3,7 @@ module github.com/systemli/prometheus-onion-service-exporter
 go 1.21
 
 require (
-	github.com/prometheus/client_golang v1.20.3
+	github.com/prometheus/client_golang v1.20.4
 	github.com/sirupsen/logrus v1.9.3
 	golang.org/x/net v0.29.0
 	gopkg.in/yaml.v2 v2.4.0
