@@ -22,7 +22,7 @@ func init() {
 	flag.Parse()
 
 	var err error
-	err, cfg = LoadConfig(configFile)
+	cfg, err = LoadConfig(configFile)
 	if err != nil {
 		log.WithError(err).Fatal("unable to load the config file")
 	}

@@ -45,18 +45,18 @@ func NewConfig() *Config {
 	}
 }
 
-func LoadConfig(path *string) (error, *Config) {
+func LoadConfig(path *string) (*Config, error) {
 	cfg := NewConfig()
 
 	bytes, err := os.ReadFile(*path)
 	if err != nil {
-		return err, cfg
+		return cfg, err
 	}
 
 	err = yaml.Unmarshal(bytes, &cfg)
 	if err != nil {
-		return err, cfg
+		return cfg, err
 	}
 
-	return nil, cfg
+	return cfg, nil
 }
