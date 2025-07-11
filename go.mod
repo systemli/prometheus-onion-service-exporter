@@ -7,7 +7,7 @@ toolchain go1.24.2
 require (
 	github.com/prometheus/client_golang v1.22.0
 	github.com/sirupsen/logrus v1.9.3
-	golang.org/x/net v0.41.0
+	golang.org/x/net v0.42.0
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -19,6 +19,6 @@ require (
 	github.com/prometheus/client_model v0.6.1 // indirect
 	github.com/prometheus/common v0.62.0 // indirect
 	github.com/prometheus/procfs v0.15.1 // indirect
-	golang.org/x/sys v0.33.0 // indirect
+	golang.org/x/sys v0.34.0 // indirect
 	google.golang.org/protobuf v1.36.5 // indirect
 )
